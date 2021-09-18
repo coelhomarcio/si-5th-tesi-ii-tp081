@@ -1,0 +1,12 @@
+<header>
+  <div>
+    <h1>{{ title }}</h1>
+    <div>
+      <p>{{ name }}</p>
+      <p><small>RA {{ ra }}</small></p>
+      <p *ngFor="let git of gits">
+        <a href="{{ git.link }}" target="_blank">{{ git.label }}</a>
+      </p>
+    </div>
+  </div>
+</header>
