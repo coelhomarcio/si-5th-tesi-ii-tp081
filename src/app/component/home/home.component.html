@@ -1,0 +1,26 @@
+<main>
+  <div>
+    <h2>Taxa do BitCoin</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Horário</th>
+          <th>Preço em Dólar</th>
+          <th>Preço em Real</th>
+          <th [innerHTML]="arrows"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bitcoinRate of bitcoinService.bitcoinRates">
+          <td>{{ bitcoinRate.time.updatedISO | date : "dd/MM/yyyy" }}</td>
+          <td>{{ bitcoinRate.time.updatedISO | date : "HH:mm:ss" }}</td>
+          <td>{{ bitcoinRate.bpi.USD.rate_float | currency : "USD" : "symbol" : "" : "en" }}</td>
+          <td>{{ bitcoinRate.bpi.BRL.rate_float | currency : "BRL" : "symbol" : "" : "pt" }}</td>
+          <td [innerHTML]="bitcoinRate.disclaimer" class=""
+              [ngClass]="{ 'up': isUp(bitcoinRate), 'down': isDown(bitcoinRate) }"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
